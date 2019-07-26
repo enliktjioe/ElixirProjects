@@ -1,6 +1,5 @@
 defmodule Cards do
-  def hello do
-    "hi there!"
+  def create_deck do
+    this.myDeck = ["Ace", "Two", "Three"]
   end
-  
 end
