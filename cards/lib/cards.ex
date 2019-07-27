@@ -29,19 +29,10 @@ defmodule Cards do
 
   def load(filename) do
     {status, binary} = File.read(filename)
-    :erlang.binary_to_term(binary)
+
+    case status do
+      :ok -> :erlang.binary_to_term(binary)
+      :error -> "That file does not exist"
+    end
   end
-
-  # bad practice in Elixir
-  # def load() do
-  #   {status, binary} = File.read(filename)
-  #
-  #   if(status == :error) {
-  #     return "Something went wrong"
-  #   }
-  # end
 end
-
-# { *hand*, *deck* }
-# { hand: [], deck: [] }
-# Cards.deal(deck, 5)
