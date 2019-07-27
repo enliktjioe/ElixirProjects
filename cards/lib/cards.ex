@@ -25,4 +25,4 @@ end
 
 # { *hand*, *deck* }
 # { hand: [], deck: [] }
-Cards.deal(deck, 5)
+# Cards.deal(deck, 5)
