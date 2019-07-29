@@ -14,7 +14,8 @@ defmodule Identicon do
       |> List.flatten()
       |> Enum.with_index()
 
-    %Identicon.Image{image | grid: grid}
+    # %Identicon.Image{image | grid: grid}
+    # possibily obsolete code that works only in older Elixir version
   end
 
   def mirror_row(row) do
