@@ -1,3 +1,9 @@
+# Install Erlang egd() inside Elixir project
+# https://codeselfstudy.com/blog/how-to-install-erlangs-egd-library-in-elixir/
+#
+# Erlang documentation
+# http://erlang.org/documentation/doc-6.1/lib/percept-0.8.9/doc/html/egd.html
+
 defmodule Identicon do
   def main(input) do
     input
