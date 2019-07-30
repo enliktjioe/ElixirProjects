@@ -1,7 +1,7 @@
 defmodule Takso.Authentication do
     import Plug.Conn
     
-    def init(_opts) do 
+    def init(opts) do 
         opts[:repo]
     end
 

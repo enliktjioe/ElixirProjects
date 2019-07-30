@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+        <header class="header">
+        <ol class="breadcrumb pull-right">
+<%= if @conn.assigns.current_user do %>
+          <li>Hello <%= @conn.assigns.current_user.username %></li>
+          <li><%= link "Log out", to: page_path(@conn, :index) %></li>
+<% else %>
+          <li><%= link "Log in", to: page_path(@conn, :index) %></li>
+<% end %>
+        </ol>
+        <span class="logo"></span>
+      </header>
 
-    <title>Hello Takso!</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-  </head>
+
 
   <body>
     <div class="container">
