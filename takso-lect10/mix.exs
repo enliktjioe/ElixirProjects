@@ -37,15 +37,24 @@ defmodule Takso.MixProject do
       {:phoenix, "~> 1.4.9"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:phoenix_live_reload, "~> 1.2.1", only: :dev},
       {:gettext, "~> 0.11"},
-      {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"},
+      {:cowboy, "~> 1.0"},
       {:white_bread, "~> 4.5", only: [:test]},
-      {:hound, "~> 1.0"}
+      {:hound, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:pbkdf2_elixir, "~> 0.12"},
+      {:canary, "~> 1.1.1"},
+      {:guardian, "~> 1.2"},
+      {:mock, "~> 0.2.0", only: :test},
+      {:ex_machina, "~> 2.1", only: :test},
+      {:faker, "~> 0.9", only: :test},
+      {:httpoison, "~> 0.13"},
+      {:poison, "~> 3.1"},
+      {:ecto_sql, "~> 3.1"},
+      {:jason, "~> 1.0"}
     ]
   end
 
