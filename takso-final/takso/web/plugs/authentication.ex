@@ -1,7 +1,13 @@
 defmodule Takso.Authentication do
-    def init(_opts), do: nil
-    def call(conn, _) do
+    import Plug.Conn
+    
+    def init(_opts) do 
+        opts[:repo]
+    end
+
+    def call(conn, repo) do
         IO.puts "HI THERE ..."
-        conn
+        user = repo.get(Takso.User, 1)
+        assign(conn, :current_user, user)
     end    
 end  
