@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :takso, Takso.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "enlik",
+  password: "",
   database: "takso_dev",
   hostname: "localhost",
   show_sensitive_data_on_connection_error: true,
