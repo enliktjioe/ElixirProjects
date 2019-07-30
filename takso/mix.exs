@@ -9,6 +9,7 @@ defmodule Takso.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      preferred_cli_env: ["white_bread.run": :test],
       aliases: aliases(),
       deps: deps()
     ]
