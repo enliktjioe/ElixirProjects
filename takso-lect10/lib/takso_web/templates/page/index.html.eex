@@ -1,0 +1,3 @@
+<div id="takso-app">
+  {{ message }}
+</div>
