@@ -15,6 +15,12 @@ module.exports = (env, options) => ({
   entry: {
     './js/app.js': glob.sync('./vendor/**/*.js').concat(['./js/app.js'])
   },
+  
+  npm: {
+    enabled: true,
+    aliases: { vue: "vue/dist/vue.common.js" }
+  },
+
   output: {
     filename: 'app.js',
     path: path.resolve(__dirname, '../priv/static/js')
