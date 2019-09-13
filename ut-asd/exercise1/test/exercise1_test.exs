@@ -1,7 +1,7 @@
 defmodule Exercise1Test do
   use ExUnit.Case
 
-  @tag :pending
+  # @tag :pending
   test "reverses a given 'charlist'" do
     assert Exercise1.reverse('abracadabra') == 'arbadacarba'
     assert Exercise1.reverse('Panama') == 'amanaP'
