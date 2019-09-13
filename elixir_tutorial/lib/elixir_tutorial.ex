@@ -1,11 +1,13 @@
 defmodule M do
   def main do
-    data_stuff()
+    do_stuff()
   end
 
-  def data_stuff do
-    IO.puts "Atom #{is_atom(:Pittsburgh)}"
-    one_to_10 = 1..10
+  def do_stuff do
+    my_str = "Enlik Enlik"
+    IO.puts "Length : #{String.length(my_str)}"
+    longer_str = my_str <> " " <> "is longer"
+    IO.puts "Equal : #{"Egg" === "egg"}"
   end
 
 
