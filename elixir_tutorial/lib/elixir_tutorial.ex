@@ -4,15 +4,26 @@ defmodule M do
   end
 
   def do_stuff do
-    age = 16
+    my_stats = {175, 6.25, :Derek}
 
-    case 2 do
-      1 -> IO.puts "Entered 1"
-      2 -> IO.puts "Entered 2"
-      _ -> IO.puts "Default"
-    end
+    IO.puts "Tuple #{is_tuple(my_stats)}"
 
-    IO.puts "Ternary #{if age > 18, do: "Can Vote", else: "Can't vote"}"
+    my_stats2 = Tuple.append(my_stats, 42)
+
+    IO.puts "Age #{elem(my_stats2, 3)}"
+
+    IO.puts "Size : #{tuple_size(my_stats2)}"
+
+    my_stats3 = Tuple.delete_at(my_stats2, 0)
+
+    my_stats4 = Tuple.insert_at(my_stats3, 0, 1974)
+
+    many_zeroes = Tuple.duplicate(0, 5)
+
+    # Tuple for pattern matching
+    {weight, height, name} = {175, 6.25, "Derek"}
+    IO.puts "Weight : #{weight}"
+
   end
 
 
