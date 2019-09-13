@@ -6,10 +6,24 @@ defmodule M do
   def do_stuff do
     age = 16
 
-    IO.puts "Vote and Drive : #{(age >= 16) and (age >= 18)}"
-    IO.puts "Vote or Drive : #{(age >= 16) or (age >= 18)}"
+    if age >= 18 do
+      IO.puts "Can Vote"
+    else
+      IO.puts "Can't Vote"
+    end
 
-    IO.puts not true
+    unless age === 18 do
+      IO.puts "You're not 18"
+    else
+      IO.puts "You are 18"
+    end
+
+    cond do
+      age >= 18 -> IO.puts "Can Vote"
+      age >= 16 -> IO.puts "You can drive"
+      age >= 14 -> IO.puts "You can wait"
+      true -> IO.puts "Default"
+    end
   end
 
 
