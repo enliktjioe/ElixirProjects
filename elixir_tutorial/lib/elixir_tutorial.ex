@@ -4,8 +4,8 @@ defmodule M do
   end
 
   def data_stuff do
-    my_float = 123
-    IO.puts "Float #{is_float(my_float)}"
+    IO.puts "Atom #{is_atom(:Pittsburgh)}"
+    one_to_10 = 1..10
   end
 
 
