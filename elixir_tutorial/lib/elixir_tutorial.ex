@@ -4,18 +4,12 @@ defmodule M do
   end
 
   def do_stuff do
-    my_str = "Enlik Enlik"
-    IO.puts "Length : #{String.length(my_str)}"
-    longer_str = my_str <> " " <> "is longer"
-
-    IO.inspect String.split(longer_str, " ") #print internal representation of a value
-
-    IO.puts String.reverse(longer_str)
-    IO.puts String.upcase(longer_str)
-    IO.puts String.downcase(longer_str)
-    IO.puts String.capitalize(longer_str)
-
-    4 * 10 |> IO.puts
+    IO.puts "5 + 4 = #{5+4}"
+    IO.puts "5 - 4 = #{5-4}"
+    IO.puts "5 * 4 = #{5*4}"
+    IO.puts "5 / 4 = #{5/4}"
+    IO.puts "7 div 4 = #{div(7,4)}"
+    IO.puts "7 rem 4 = #{rem(7,4)}"
   end
 
 
