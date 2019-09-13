@@ -4,27 +4,50 @@ defmodule M do
   end
 
   def do_stuff do
-    my_stats = {175, 6.25, :Derek}
+    list1 = [1,2,3]
+    list2 = [4,5,6]
 
-    IO.puts "Tuple #{is_tuple(my_stats)}"
+    list3 = list1 ++ list2
+    
+    list4 = list3 -- list1
 
-    my_stats2 = Tuple.append(my_stats, 42)
+    IO.puts 6 in list4
 
-    IO.puts "Age #{elem(my_stats2, 3)}"
+    [head | tail] = list3
+    IO.puts "Head : #{head}"
 
-    IO.puts "Size : #{tuple_size(my_stats2)}"
+    IO.write "Tail : "
+    IO.inspect tail
 
-    my_stats3 = Tuple.delete_at(my_stats2, 0)
+    IO.inspect [97, 98], char_lists: :as_lists
 
-    my_stats4 = Tuple.insert_at(my_stats3, 0, 1974)
+    Enum.each tail, fn item ->
+        IO.puts item
+    end
 
-    many_zeroes = Tuple.duplicate(0, 5)
+    words = ["Random", "Words", "in a", "list"]
+    Enum.each words,fn word ->
+      IO.puts word
+    end
 
-    # Tuple for pattern matching
-    {weight, height, name} = {175, 6.25, "Derek"}
-    IO.puts "Weight : #{weight}"
+    display_list(words)
+
+    # IO.puts display_list(List.delete(words, "Random"))
+    # IO.puts display_list(List.delete_at(words, 1))
+    # IO.puts display_list(List.insert_at(words, 4, "Yeah"))
+    IO.puts List.first(words)
+
+    IO.puts List.last(words)
+
+    my_stats = [name: "Derek", height: 6.25]
 
   end
 
+  def display_list([word|words]) do
+    IO.puts word
+    display_list(words)
+  end
+
+  def display_list([]), do: nil
 
 end
