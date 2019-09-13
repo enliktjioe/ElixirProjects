@@ -4,12 +4,15 @@ defmodule M do
   end
 
   def do_stuff do
-    IO.puts "5 + 4 = #{5+4}"
-    IO.puts "5 - 4 = #{5-4}"
-    IO.puts "5 * 4 = #{5*4}"
-    IO.puts "5 / 4 = #{5/4}"
-    IO.puts "7 div 4 = #{div(7,4)}"
-    IO.puts "7 rem 4 = #{rem(7,4)}"
+    IO.puts "4 == 4.0 : #{4 == 4.0}" # comparing the value, so it will be TRUE
+    IO.puts "4 === 4.0 : #{4 === 4.0}" # comparing the data type, so it will be FALSE
+    IO.puts "4 != 4.0 : #{4 != 4.0}" # comparing the value, so it will be FALSE
+    IO.puts "4 !== 4.0 : #{4 !== 4.0}" # comparing the value, so it will be TRUE
+
+    IO.puts "5 > 4 : #{5 > 4}"
+    IO.puts "5 >= 4 : #{5 >= 4}"
+    IO.puts "5 < 4 : #{5 < 4}"
+    IO.puts "5 <= 4 : #{5 <= 4}"
   end
 
 
