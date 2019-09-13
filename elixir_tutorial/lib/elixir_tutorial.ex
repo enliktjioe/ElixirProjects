@@ -4,15 +4,12 @@ defmodule M do
   end
 
   def do_stuff do
-    IO.puts "4 == 4.0 : #{4 == 4.0}" # comparing the value, so it will be TRUE
-    IO.puts "4 === 4.0 : #{4 === 4.0}" # comparing the data type, so it will be FALSE
-    IO.puts "4 != 4.0 : #{4 != 4.0}" # comparing the value, so it will be FALSE
-    IO.puts "4 !== 4.0 : #{4 !== 4.0}" # comparing the value, so it will be TRUE
+    age = 16
 
-    IO.puts "5 > 4 : #{5 > 4}"
-    IO.puts "5 >= 4 : #{5 >= 4}"
-    IO.puts "5 < 4 : #{5 < 4}"
-    IO.puts "5 <= 4 : #{5 <= 4}"
+    IO.puts "Vote and Drive : #{(age >= 16) and (age >= 18)}"
+    IO.puts "Vote or Drive : #{(age >= 16) or (age >= 18)}"
+
+    IO.puts not true
   end
 
 
