@@ -4,8 +4,25 @@ defmodule M do
   end
 
   def do_stuff do
-    IO.puts "Factorial of 3 : #{factorial(3)}"
+    
+    IO.puts "Sum: #{sum([1,2,3])}"
 
+    loop(5,1)
+  end
+
+  def sum([]), do: 0
+
+  def sum([h | t]), do: h + sum(t)
+
+  def loop(0,_), do: nil
+
+  def loop(max, min) do
+    if max < min do
+      loop(0, min)
+    else
+      IO.puts "Num : #{max}"
+      loop(max - 1, min)
+    end
   end
 
   def display_list([word|words]) do
@@ -14,14 +31,5 @@ defmodule M do
   end
 
   def display_list([]), do: nil
-
-  def factorial(num) do
-    if num <= 1 do
-      1
-    else
-      result = num * factorial(num - 1)
-      result
-    end
-  end 
 
 end
