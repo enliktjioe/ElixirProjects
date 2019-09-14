@@ -4,23 +4,7 @@ defmodule M do
   end
 
   def do_stuff do
-    get_sum = fn (x, y) -> x + y end
-
-    IO.puts "5 + 5 = #{get_sum.(5,5)}"
-
-    get_less = &(&1 - &2)
-
-    IO.puts "7 - 6 = #{get_less.(7,6)}"
-
-    add_sum = fn
-      {x, y} -> IO.puts "#{x} + #{y} = #{x+y}"
-      {x, y, z} -> IO.puts "#{x} + #{y} + #{z} = #{x+y+z}"
-    end
-
-    add_sum.({1,2})
-    add_sum.({1,2,3})
-
-    IO.puts do_it()
+    IO.puts "Factorial of 3 : #{factorial(3)}"
 
   end
 
@@ -31,8 +15,13 @@ defmodule M do
 
   def display_list([]), do: nil
 
-  def do_it(x \\ 1, y \\ 1) do
-    x + y
-  end
+  def factorial(num) do
+    if num <= 1 do
+      1
+    else
+      result = num * factorial(num - 1)
+      result
+    end
+  end 
 
 end
