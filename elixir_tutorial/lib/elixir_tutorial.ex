@@ -4,42 +4,17 @@ defmodule M do
   end
 
   def do_stuff do
-    list1 = [1,2,3]
-    list2 = [4,5,6]
+    capitals = %{"Alabama" => "Montgomery",
+      "Alaska" => "Juneau", "Arizona" => "Phoenix"}
 
-    list3 = list1 ++ list2
-    
-    list4 = list3 -- list1
+    IO.puts "Capital of Alaska #{capitals["Alaska"]}"
 
-    IO.puts 6 in list4
+    capitals2 = %{alabama: "Montgomery",
+      alaska: "Juneau", arizona: "Phoenix"}
 
-    [head | tail] = list3
-    IO.puts "Head : #{head}"
+    IO.puts "Capital of Arizona is #{capitals2.arizona}"
 
-    IO.write "Tail : "
-    IO.inspect tail
-
-    IO.inspect [97, 98], char_lists: :as_lists
-
-    Enum.each tail, fn item ->
-        IO.puts item
-    end
-
-    words = ["Random", "Words", "in a", "list"]
-    Enum.each words,fn word ->
-      IO.puts word
-    end
-
-    display_list(words)
-
-    # IO.puts display_list(List.delete(words, "Random"))
-    # IO.puts display_list(List.delete_at(words, 1))
-    # IO.puts display_list(List.insert_at(words, 4, "Yeah"))
-    IO.puts List.first(words)
-
-    IO.puts List.last(words)
-
-    my_stats = [name: "Derek", height: 6.25]
+    capitals3 = Dict.put_new(capitals, "Arkansas", "Little Rock")
 
   end
 
