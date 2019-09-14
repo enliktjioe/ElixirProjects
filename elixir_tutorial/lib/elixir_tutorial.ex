@@ -5,24 +5,18 @@ defmodule M do
 
   def do_stuff do
     
-    IO.puts "Sum: #{sum([1,2,3])}"
+    # IO.puts "Even list: #{Enum.any?([1,2,3],
+    # fn(n) -> rem(n, 2) == 0 end)}"
 
-    loop(5,1)
-  end
+    Enum.each([1,2,3], fn(n) -> IO.puts n end)
 
-  def sum([]), do: 0
+    dbl_list = Enum.map([1,2,3], fn(n) -> n * 2 end)
+    IO.inspect dbl_list
 
-  def sum([h | t]), do: h + sum(t)
-
-  def loop(0,_), do: nil
-
-  def loop(max, min) do
-    if max < min do
-      loop(0, min)
-    else
-      IO.puts "Num : #{max}"
-      loop(max - 1, min)
-    end
+    sum_vals = Enum.reduce([1,2,3], fn(n, sum) -> n + sum end)
+    IO.puts "Sum : #{sum_vals}"
+    
+    IO.inspect Enum.uniq([1,2,2])
   end
 
   def display_list([word|words]) do
