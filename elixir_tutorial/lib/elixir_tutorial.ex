@@ -4,17 +4,11 @@ defmodule M do
   end
 
   def do_stuff do
-    capitals = %{"Alabama" => "Montgomery",
-      "Alaska" => "Juneau", "Arizona" => "Phoenix"}
+    [length, width] = [20, 30]
+    IO.puts "Width: #{width}"
 
-    IO.puts "Capital of Alaska #{capitals["Alaska"]}"
-
-    capitals2 = %{alabama: "Montgomery",
-      alaska: "Juneau", arizona: "Phoenix"}
-
-    IO.puts "Capital of Arizona is #{capitals2.arizona}"
-
-    capitals3 = Dict.put_new(capitals, "Arkansas", "Little Rock")
+    [_, [_, a]] = [20, [30, 40]]
+    IO.puts "Get Num: : #{a}"
 
   end
 
