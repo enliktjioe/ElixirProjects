@@ -5,18 +5,11 @@ defmodule M do
 
   def do_stuff do
     
-    # IO.puts "Even list: #{Enum.any?([1,2,3],
-    # fn(n) -> rem(n, 2) == 0 end)}"
-
-    Enum.each([1,2,3], fn(n) -> IO.puts n end)
-
-    dbl_list = Enum.map([1,2,3], fn(n) -> n * 2 end)
+    dbl_list = for n <- [1,2,3], do: n * 2
     IO.inspect dbl_list
 
-    sum_vals = Enum.reduce([1,2,3], fn(n, sum) -> n + sum end)
-    IO.puts "Sum : #{sum_vals}"
-    
-    IO.inspect Enum.uniq([1,2,2])
+    even_list = for n <- [1,2,3,4], rem(n,2) == 0, do: n
+    IO.inspect even_list
   end
 
   def display_list([word|words]) do
