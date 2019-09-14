@@ -10,11 +10,13 @@ defmodule Exercise1 do
 
     def reverse([head | tail], acc) do
         # IO.puts "something to print"
-        IO.puts acc
+        # IO.puts acc
         reverse(tail, [head | acc])
     end
 
-    def upcase([]), do: []
+    def upcase([]) do
+        []
+    end
 
     def upcase([head | tail]) when head in ?a..?z do
         # IO.puts
@@ -37,11 +39,16 @@ defmodule Exercise1 do
         [head | remove_non_alpha(tail)]
     end
 
-    # def remove_non_alpha(word), do: word |> Enum.filter(fn(x) -> if x in ?a..?z or in ?A..?Z end)
+    def palindrome(word) do
+        remove_non_alpha(word)
+        |> upcase
+        |> verify
 
-    # def palindrome(word) do
-    #     upcased = word |> upcase
+    end
 
-    # end
+    def verify(word) do
+        word == reverse(word)
+    end
+
 
 end
