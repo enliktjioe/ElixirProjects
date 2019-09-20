@@ -9,15 +9,29 @@ defmodule Bowling do
     # 0 is the initial value, acc = accumulator -> n + acc
   end
 
-
+  # gutter game
   defp count([]) do
     0
   end
 
+  # perfect game
+  defp count([10, 10, 10]) do
+    30
+  end
+
+  # one strike
+  # defp count([h1 | [h2 | tail]]) when h1 == 10 do
+  defp count([10 | [h2 | tail]]) do
+    10 + h2 + hd(tail) + count([h2 | tail])
+  end
+  # nil value removed by Enum.filter()
+
+  # one spare
   defp count([h1 | [h2 | tail]]) when h1 + h2 == 10 do
     10 + hd(tail) + count(tail)
   end
 
+  # all one games
   defp count([h1 | [h2 | tail]]) do
     h1 + h2 + count(tail)
   end
