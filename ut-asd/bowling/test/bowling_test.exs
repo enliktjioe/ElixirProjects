@@ -28,8 +28,8 @@ defmodule BowlingTest do
   end
 
   test "glutter last frame spare" do
-    game = List.duplicate([0, 0], 9) ++ [[4, 4, nil]]
-    assert Bowling.score(game) == 8
+    game = List.duplicate([0, 0], 9) ++ [[10, 10, 0]]
+    assert Bowling.score(game) == 20
   end
 
   test "glutter last frame strike" do
