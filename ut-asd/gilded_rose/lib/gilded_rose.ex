@@ -48,7 +48,7 @@ defmodule GildedRose do
       else
         item
       end
-      item = 
+      item =
       if (item.sell_in < 0) do
         if (item.name != "Aged Brie") do
           if (item.name != "Backstage passes to a TAFKAL80ETC concert") do
@@ -75,5 +75,12 @@ defmodule GildedRose do
         item
       end
     end
+  end
+
+  defp increase_quality(item, val), do:
+  defp update_quality(item), do: %{item | quality: item.quality - 1}
+
+  def update_items(items) do
+    items |> Enum.map(&(&1 |> update_quality |> update_sell_in))
   end
 end
