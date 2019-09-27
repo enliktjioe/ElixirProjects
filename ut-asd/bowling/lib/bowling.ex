@@ -15,7 +15,7 @@ defmodule Bowling do
   end
 
   # perfect game
-  defp count([h1, h2, h3]) when h1 == 10 or h1 + h2 == 10 do
+  defp count([h1, h2, h3]) when h1 == 10 or h2 == 10 or h1 + h2 == 10 do
     h1 + h2 + h3
   end
 
