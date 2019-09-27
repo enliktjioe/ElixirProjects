@@ -1,5 +1,5 @@
 defmodule GildedRose do
-  def update_items(items) do
+  def update_quality(items) do
     for item <- items do
       item =
       if (item.name != "Aged Brie") and (item.name != "Backstage passes to a TAFKAL80ETC concert") do
@@ -48,7 +48,7 @@ defmodule GildedRose do
       else
         item
       end
-      item =
+      item = 
       if (item.sell_in < 0) do
         if (item.name != "Aged Brie") do
           if (item.name != "Backstage passes to a TAFKAL80ETC concert") do
