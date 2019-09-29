@@ -1,3 +1,0 @@
-defmodule ElixirSchool do
-
-end
