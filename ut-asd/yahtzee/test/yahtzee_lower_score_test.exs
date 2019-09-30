@@ -23,5 +23,26 @@ defmodule YahtzeeLowerScoreTest do
       assert %{"Three of a kind": ^sum} = Yahtzee.score_lower(dices)
     end)
   end
+
+  test "Identify 'Four of a kind' with every face" do
+    Enum.map(1..6, fn (dice_face) ->
+      dices = generate(dice_face, 4)
+      sum = Enum.sum(dices)
+      assert %{"Four of a kind": ^sum} = Yahtzee.score_lower(dices)
+    end)
+  end
+
+  test "Identify 'Full house' with every face" do
+    Enum.map(1..6, fn _ ->
+      [x,y] =
+        Enum.shuffle(1..6)
+        |> Enum.take(2)
+      assert %{"Full house": 25} = Yahtzee.score_lower([x,x,x,y,y] |> Enum.shuffle)
+    end)
+  end
+
+
+
+
 end
 
