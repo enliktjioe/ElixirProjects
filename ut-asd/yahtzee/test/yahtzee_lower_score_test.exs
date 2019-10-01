@@ -41,6 +41,63 @@ defmodule YahtzeeLowerScoreTest do
     end)
   end
 
+  # Code Reference
+  # https://github.com/dwelve/elixir-yahtzee/blob/master/lib/yahtzee.ex
+  def small_straights do
+    [[1,2,3,4],[2,3,4,5],[3,4,5,6]]
+  end
+
+  def large_straights do
+    [[1,2,3,4,5], [2,3,4,5,6]]
+  end
+
+  def score_straight(dice, straights) do
+    # alternatively, sort unique items and compare against straights items
+    checks = for ss <- straights do
+      Enum.map(ss, &(&1 in dice)) |> Enum.all?
+    end
+    Enum.any?(checks)
+  end
+
+  test "Identify 'Small straights' with every face" do
+    Enum.map(1..6, fn _ ->
+      [a,b,c,d] =
+        Enum.shuffle(1..6)
+        |> Enum.take(4)
+      assert %{"Small straights": 30} = Yahtzee.score_lower([a,b,c,d] |> Enum.shuffle)
+    end)
+  end
+
+
+  test "Identify 'Large straights' with every face" do
+    Enum.map(1..6, fn _ ->
+      [a,b,c,d,e] =
+        Enum.shuffle(1..6)
+        |> Enum.take(5)
+      assert %{"Large straights": 40} = Yahtzee.score_lower([a,b,c,d,e] |> Enum.shuffle)
+    end)
+  end
+
+  test "Identify 'Yahtzee'" do
+    Enum.map(1..6, fn n ->
+      assert %{Yahtzee: 50} = Yahtzee.score_lower(List.duplicate(n,5))
+    end)
+  end
+
+  test "Identify any other combination" do
+    Enum.map(1..6, fn _ ->
+      [x,y,z] =
+        Enum.shuffle(1..6)
+        |> Enum.take(3)
+      seq = Enum.shuffle([x,x,y,y,z])
+      sum = Enum.sum(seq)
+      assert %{Chance: ^sum} = Yahtzee.score_lower(seq)
+    end)
+  end
+
+
+
+
 
 
 
