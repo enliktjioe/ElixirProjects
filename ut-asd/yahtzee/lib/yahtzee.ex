@@ -67,7 +67,27 @@ defmodule Yahtzee do
       Sixes: 6 * length(Enum.filter(dice, fn e -> e == 6 end))}
   end
 
+  # def score_lower(%{"Three of a kind": Enum.sum(dices)), do: %{"Three of a kind": Enum.sum(dices)}
+  # def score_lower(%{"Four of a kind": Enum.sum(dices)), do: %{"Four of a kind": Enum.sum(dices)}
+  # def score_lower(%{"Full house": 25), do: %{"Full house": 25}
+  # def score_lower(%{"Small straights": 30), do: %{"Small straights": 30}
+  # def score_lower(%{"Large straights": 40), do: %{"Large straights": 40}
+  # def score_lower(%{Yahtzee: 50), do: %{Yahtzee: 50}
+  # def score_lower(%{Chance: Enum.sum(dices)), do: %{Chance: Enum.sum(dices)}
+
+  def score_lower(%{"Three of a kind": Enum.sum(dices)), do: %{"Three of a kind": Enum.sum(dices)}
+  def score_lower(%{"Four of a kind": Enum.sum(dices)), do: %{"Four of a kind": Enum.sum(dices)}
+  def score_lower(%{"Full house": 25), do: %{"Full house": 25}
+  def score_lower(%{"Small straights": 30), do: %{"Small straights": 30}
+  def score_lower(%{"Large straights": 40), do: %{"Large straights": 40}
+  def score_lower(%{Yahtzee: 50), do: %{Yahtzee: 50}
+  def score_lower(%{Chance: Enum.sum(dices)), do: %{Chance: Enum.sum(dices)}
+
   def score_lower(dices) do
+    # def update_sell_in(%{name: "Sulfuras"<>_} = item), do: item
+    # def update_sell_in(item), do: %{item | sell_in: item.sell_in - 1}
+
+
     %{"Three of a kind": Enum.sum(dices),
       "Four of a kind": Enum.sum(dices),
       "Full house": 25,
