@@ -7,6 +7,14 @@ defmodule GildedRose do
     end
   end
 
+  def update_sell_in(item) do
+    if (item.name == "Sulfuras, Hand of Ragnaros") do
+      item
+    else
+      %{item | sell_in: item.sell_in - 1}
+    end
+  end
+
   def update_quality(items) do
     for item <- items do
       item =
@@ -43,21 +51,13 @@ defmodule GildedRose do
         end
       end
       item =
-      if (item.name != "Sulfuras, Hand of Ragnaros") do
-        %{item | sell_in: item.sell_in - 1}
-      else
-        item
-      end
+        update_sell_in(item)
       item =
       if (item.sell_in < 0) do
         if (item.name != "Aged Brie") do
           if (item.name != "Backstage passes to a TAFKAL80ETC concert") do
             if item.quality > 0 do
-              if (item.name != "Sulfuras, Hand of Ragnaros") do
-                %{item | quality: item.quality - 1}
-              else
-                item
-              end
+              update_sell_in(item)
             else
               item
             end
