@@ -1,11 +1,11 @@
 defmodule GildedRose do
-  # def increase_quality(item) do
-  #   if item.quality < 50 do
-  #     %{item | quality: item.quality + 1}
-  #   else
-  #     item
-  #   end
-  # end
+  def increase_quality(item) do
+    if item.quality < 50 do
+      %{item | quality: item.quality + 1}
+    else
+      item
+    end
+  end
 
   def update_quality(items) do
     for item <- items do
@@ -26,20 +26,12 @@ defmodule GildedRose do
           if (itemp.name == "Backstage passes to a TAFKAL80ETC concert") do
             itemq =
               if (itemp.sell_in < 11) do
-                if (itemp.quality < 50) do
-                  %{itemp | quality: itemp.quality + 1}
-                else
-                  itemp
-                end
+                increase_quality(itemp)
               else
                 itemp
               end
             if (itemq.sell_in < 6) do
-              if (itemq.quality < 50) do
-                %{itemq | quality: itemq.quality + 1}
-              else
-                itemq
-              end
+              increase_quality(itemq)
             else
               itemq
             end
@@ -73,12 +65,7 @@ defmodule GildedRose do
             %{item | quality: item.quality - item.quality}
           end
         else
-          # increase_quality(item)
-          if (item.quality < 50) do
-            %{item | quality: item.quality + 1}
-          else
-            item
-          end
+          increase_quality(item)
         end
       else
         item

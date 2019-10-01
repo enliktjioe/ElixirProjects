@@ -8,7 +8,7 @@ defmodule GildedRose.Mixfile do
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
       deps: deps(),
-      # test_coverage: [tool: Coverex.Task]
+      test_coverage: [tool: Coverex.Task]
     ]
   end
 
@@ -22,7 +22,7 @@ defmodule GildedRose.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:coverex, "~> 1.4.10", only: :test}
+      {:coverex, "~> 1.4.10", only: :test}
       # {:dep_from_hexpm, "~> 0.3.0"},
       # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
     ]
