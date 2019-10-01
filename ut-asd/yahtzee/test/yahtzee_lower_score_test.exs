@@ -95,6 +95,14 @@ defmodule YahtzeeLowerScoreTest do
     end)
   end
 
+  test "Add a corresponding score and the other scored with 0" do
+    # items = [ %Item{name: "Conjured Mana Cake ", sell_in: 6, quality: 10},
+    #           %Item{name: "Conjured Mana Cake", sell_in: 45, quality: 33}]
+    # res = GildedRose.update_items(items)
+    # assert res === Enum.map(items, &(%{&1 | sell_in: &1.sell_in - 1, quality: &1.quality - 2}))
+
+  end
+
 
 
 
