@@ -15,6 +15,9 @@ defmodule GildedRose do
     end
   end
 
+  def update_sell_in(%{name: "Sulfuras"<>_} = item), do: item
+  def update_sell_in(item), do: %{item | sell_in: item.sell_in - 1}
+
   def update_quality(items) do
     for item <- items do
       item =
