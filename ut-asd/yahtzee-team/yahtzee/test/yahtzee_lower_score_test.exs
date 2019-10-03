@@ -10,31 +10,27 @@ defmodule YahtzeeLowerScoreTest do
     |> Enum.shuffle
   end
 
-  def generateSmallStraight(dice_face) when dice_face != 3 and dice_face != 4 do
-    Enum.to_list(1..6)
-    |> List.delete(dice_face)
-    |> Enum.take(5)
-    |> Enum.shuffle
+  def generateSmallStraight(n) do
+    case n do
+      1  -> [1,2,3,4] ++ [Enum.random([1,2,3,4,6])] |> Enum.shuffle
+      2  -> [2,3,4,5] ++ [Enum.random([2,3,4,5])]   |> Enum.shuffle
+      3  -> [3,4,5,6] ++ [Enum.random([1,3,4,5,6])] |> Enum.shuffle
+      _  -> [1,2,3,4,1]
+    end
   end
 
-  def generateSmallStraight(dice_face) when dice_face == 3 or dice_face == 4 do
-    Enum.to_list(1..6)
-    |> Enum.take(5)
-    |> Enum.shuffle
+  def generateLargeStraight(n) do
+    case n do
+      1  -> [1,2,3,4,5] |> Enum.shuffle
+      2  -> [2,3,4,5,6] |> Enum.shuffle
+      _  -> [1,2,3,4,5]
+    end
   end
 
-  def generateLargeStraight(n) when n == 1 do
-    Enum.to_list(1..6)
-    |> List.delete(1)
-    |> Enum.take(5)
-    |> Enum.shuffle
-  end
-
-  def generateLargeStraight(n) when n == 2 do
-    Enum.to_list(1..6)
-    |> List.delete(6)
-    |> Enum.take(5)
-    |> Enum.shuffle
+  def generateRandomDices(dice_face) do
+    Enum.reduce(1..4, [dice_face], fn(_, acc) ->
+      Enum.shuffle(1..6) |> Enum.take(1) |> Enum.concat(acc)
+    end)
   end
 
   test "Identify 'Three of a kind' with ones" do
@@ -68,14 +64,14 @@ defmodule YahtzeeLowerScoreTest do
     end)
   end
 
-  test "Identify 'Small straight' with every face" do
-    Enum.map(1..6, fn (dice_face) ->
-      dices = generateSmallStraight(dice_face)
+  test "Identify 'Small straight' with all possibilities" do
+    Enum.map(1..3, fn (n) ->
+      dices = generateSmallStraight(n)
       assert %{"Small straight": 30} = Yahtzee.score_lower(dices)
     end)
   end
 
-  test "Identify 'Large straight' with every face" do
+  test "Identify 'Large straight' with all possibilities" do
     Enum.map(1..2, fn (n) ->
       dices = generateLargeStraight(n)
       assert %{"Large straight": 40} = Yahtzee.score_lower(dices)
@@ -96,6 +92,62 @@ defmodule YahtzeeLowerScoreTest do
       seq = Enum.shuffle([x,x,y,y,z])
       sum = Enum.sum(seq)
       assert %{Chance: ^sum} = Yahtzee.score_lower(seq)
+    end)
+  end
+
+  test "Identify corresponding score lower" do
+    Enum.map(1..6, fn dice_face ->
+      dices = generateRandomDices(dice_face)
+      mapList = Yahtzee.score_lower(dices)
+
+      cond do
+        mapList[:Chance] > 0 ->
+          assert mapList[:"Three of a kind"] == 0
+          assert mapList[:"Four of a kind"] == 0
+          assert mapList[:"Full house"] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:"Large straight"] == 0
+          assert mapList[:Yahtzee] == 0
+
+        mapList[:"Three of a kind"] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:"Large straight"] == 0
+
+        mapList[:"Four of a kind"] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Full house"] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:"Large straight"] == 0
+
+        mapList[:"Full house"] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:"Large straight"] == 0
+          assert mapList[:Yahtzee] == 0
+
+        mapList[:"Small straight"] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Three of a kind"] == 0
+          assert mapList[:"Four of a kind"] == 0
+          assert mapList[:"Full house"] == 0
+          assert mapList[:"Large straight"] == 0
+          assert mapList[:Yahtzee] == 0
+
+        mapList[:"Large straight"] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Three of a kind"] == 0
+          assert mapList[:"Four of a kind"] == 0
+          assert mapList[:"Full house"] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:Yahtzee] == 0
+
+        mapList[:Yahtzee] > 0 ->
+          assert mapList[:Chance] == 0
+          assert mapList[:"Full house"] == 0
+          assert mapList[:"Small straight"] == 0
+          assert mapList[:"Large straight"] == 0
+      end
     end)
   end
 

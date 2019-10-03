@@ -1,17 +1,21 @@
 defmodule Yahtzee do
 
   def score_all(dice) do
-    score_upper(dice)
-    score_lower(dice)
+    upper = score_upper(dice)
+    lower = score_lower(dice)
+    Map.merge(upper, lower)
   end
 
+  def countLength(dice, x) do
+    dice |> Enum.filter(fn e -> e == x end) |> length()
+  end
   def score_upper(dice) do
-    %{Ones: length(Enum.filter(dice, fn e -> e == 1 end)),
-      Twos: length(Enum.filter(dice, fn e -> e == 2 end)),
-      Threes: length(Enum.filter(dice, fn e -> e == 3 end)),
-      Fours: length(Enum.filter(dice, fn e -> e == 4 end)),
-      Fives: length(Enum.filter(dice, fn e -> e == 5 end)),
-      Sixes: length(Enum.filter(dice, fn e -> e == 6 end))}
+    %{Ones: countLength(dice,1),
+      Twos: countLength(dice, 2),
+      Threes: countLength(dice, 3),
+      Fours: countLength(dice, 4),
+      Fives: countLength(dice, 5),
+      Sixes: countLength(dice, 6)}
   end
 
   def score_lower(dice) do
@@ -43,24 +47,38 @@ defmodule Yahtzee do
     end
   end
 
-  def scoreSmallStraight(dice), do: (if scoreStraight(dice, smallStrights()), do: 30, else: 0)
-  def scoreLargeStraight(dice), do: (if scoreStraight(dice, largeStrights()), do: 40, else: 0)
+  def scoreSmallStraight(dice) do
+    if isStraight(dice, largeStraightsPattern()) == false do
+      if isStraight(dice, smallStraightsPattern()), do: 30, else: 0
+    else
+      0
+    end
+  end
 
-  def smallStrights, do: [[1,2,3,4],[2,3,4,5],[3,4,5,6]]
-  def largeStrights, do: [[1,2,3,4,5], [2,3,4,5,6]]
+  def scoreLargeStraight(dice), do: (if isStraight(dice, largeStraightsPattern()), do: 40, else: 0)
 
-  def scoreStraight(dice, straightList) do
-    checks = for listN <- straightList do
+  def smallStraightsPattern, do: [[1,2,3,4],[2,3,4,5],[3,4,5,6]]
+  def largeStraightsPattern, do: [[1,2,3,4,5], [2,3,4,5,6]]
+
+  def isStraight(dice, straightType) do
+    checks = for listN <- straightType do
       Enum.map(listN, fn n -> n in dice end) |> Enum.all?
     end
     Enum.any?(checks)
   end
 
   def scoreYahtzee(dice), do: (if scoreN(dice, 5) != 0, do: 50, else: 0)
-  def scoreChance(dice), do: Enum.sum(dice)
 
-  def checkingCombination (dice) do
-
+  def scoreChance(dice) do
+    cond do
+      scoreN(dice, 3) > 0           -> 0
+      scoreN(dice, 4) > 0           -> 0
+      scoreFullHouse(dice) > 0      -> 0
+      scoreSmallStraight(dice) > 0  -> 0
+      scoreLargeStraight(dice) > 0  -> 0
+      scoreYahtzee(dice) > 0        -> 0
+      true                          -> Enum.sum(dice)
+    end
   end
 
 end
