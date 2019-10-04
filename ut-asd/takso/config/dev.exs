@@ -12,7 +12,7 @@ config :takso, Takso.Repo,
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
-# The watchers configuration can be used to run external
+# The watchers configuration can be used to MIX run external
 # watchers to your application. For example, we use it
 # with webpack to recompile .js and .css sources.
 config :takso, TaksoWeb.Endpoint,
