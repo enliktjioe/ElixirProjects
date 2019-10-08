@@ -12,7 +12,7 @@ defmodule WhiteBreadContext do
   end
   scenario_finalize fn _status, _state ->
     # Hound.end_session
-    nil
+    # nil
   end
 
   given_ ~r/^the following taxis are on duty$/, fn state ->
