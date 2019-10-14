@@ -11,7 +11,12 @@ defmodule TaksoWeb.BookingController do
     render conn, "new.html", changeset: changeset
   end
 
-  def create(conn, %{"booking" => _booking_params}) do
+  def create(conn, %{"booking" => booking_params}) do
+    user = conn.assigns.current_user
+
+    booking_struct = Ecto.build_assoc(user, :bookings, Enum.map(booking_params, fn({key, value}) -> {String.to_atom(key), value} end))
+    Repo.insert(booking_struct)
+
     query = from t in Taxi, where: t.status == "available", select: t
     available_taxis = Repo.all(query)
 
@@ -23,7 +28,8 @@ defmodule TaksoWeb.BookingController do
               |> put_flash(:info, "At present, there is no taxi available!")
               |> redirect(to: booking_path(conn, :new))
     end
-
   end
+
+
 
 end
