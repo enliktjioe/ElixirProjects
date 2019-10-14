@@ -6,7 +6,6 @@ defmodule Takso.Repo.Migrations.CreateTaxis do
       add :username, :string
       add :location, :string
       add :status, :string
-
       timestamps()
     end
 
