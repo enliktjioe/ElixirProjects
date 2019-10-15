@@ -9,7 +9,7 @@ defmodule WhiteBreadContext do
     %{}
   end
 
-  scenario_starting_state fn state ->
+  scenario_starting_state fn _state ->
     Hound.start_session
     Ecto.Adapters.SQL.Sandbox.checkout(Takso.Repo)
     Ecto.Adapters.SQL.Sandbox.mode(Takso.Repo, {:shared, self()})
