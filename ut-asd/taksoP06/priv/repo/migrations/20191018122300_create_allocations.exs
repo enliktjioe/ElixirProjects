@@ -11,6 +11,6 @@ defmodule Takso.Repo.Migrations.CreateAllocations do
     end
 
     create unique_index(:allocations, [:booking_id, :taxi_id])
-
   end
 end
+
