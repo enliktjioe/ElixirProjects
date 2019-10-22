@@ -25,3 +25,9 @@ config :logger, :console,
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"
+
+
+config :takso, Takso.Guardian,
+  issuer: "takso",
+  secret_key: "k/3jRqRQia3CtYizAtfisD1K3OI5RZsPs1QJOisoI26uzjL/PijnNgTsdhV9kMJT" # put the result of running `mix guardian.gen.secret`
+
