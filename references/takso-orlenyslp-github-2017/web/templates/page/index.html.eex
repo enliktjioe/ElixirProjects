@@ -1,0 +1,4 @@
+<div id="takso-app">
+   <customer></customer>
+   <driver></driver>
+</div>
