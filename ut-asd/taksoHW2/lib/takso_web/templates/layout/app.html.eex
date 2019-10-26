@@ -17,10 +17,10 @@
 
   <body>
     <div class="container">
-    <nav class = "light-blue">
+    <nav class = "light-green">
       <div class = "nav-wrapper container">
         <a href = "/" class = "brand-logo">
-          Welcom to Takso 
+          Strelsau Taxi
         </a>
         <ul class ="right">
 <%= if @conn.assigns.current_user do %>
