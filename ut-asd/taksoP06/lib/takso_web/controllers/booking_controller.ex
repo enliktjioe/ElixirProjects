@@ -48,8 +48,18 @@ defmodule TaksoWeb.BookingController do
               |> put_flash(:info, "At present, there is no taxi available!")
               |> redirect(to: booking_path(conn, :index))
     end
+
   end
 
+  def summary(conn, _params) do
+    query = from t in Taxi,
+            join: a in Allocation, on: t.id == a.taxi_id,
+            group_by: t.username,
+            where: a.status == "accepted",
+            select: {t.username, count(a.id)}
 
+    IO.inspect Summary_Info: Repo.all(query)
+    render conn, "summary.html", tuples: Repo.all(query)
+  end
 
 end
