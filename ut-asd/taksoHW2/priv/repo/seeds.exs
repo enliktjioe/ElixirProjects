@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Takso.{Repo, Accounts.User, Sales.Taxi}
+alias Takso.{Booking, Taxi, Repo, Accounts.User, Sales.Allocation, Services.Geolocation }
 
 [%{name: "Fred Flintstone", username: "fred", password: "parool"},
  %{name: "Barney Rubble", username: "barney", password: "parool"}]
@@ -22,3 +22,7 @@ alias Takso.{Repo, Accounts.User, Sales.Taxi}
 # %{location: "Raatuse 22", username: "taxi_driver2", status: "available"}]
 #|> Enum.map(fn taxi_data -> Taxi.changeset(%Taxi{}, taxi_data) end)
 #|> Enum.each(fn changeset -> Repo.insert!(changeset) end)
+
+Repo.insert!(%Taxi{location: "Turu 2", status: "available", username: "flash"})
+Repo.insert!(%Taxi{location: "Turu 4, Tartu, Estonia", status: "available", username: "flash"})
+Repo.insert!(%Taxi{location: "Parnu Mnt 102c, Tallinn, Estonia", status: "available", username: "flash"})
