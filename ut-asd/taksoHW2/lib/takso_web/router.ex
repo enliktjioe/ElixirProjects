@@ -7,15 +7,7 @@ defmodule TaksoWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    #plug Takso.Authentication, repo: Takso.Repo
-  end
-
-  pipeline :browser_auth do
-    plug Takso.AuthPipeline
-  end
-
-  pipeline :ensure_auth do
-    plug Guardian.Plug.EnsureAuthenticated
+    plug Takso.Authentication, repo: Takso.Repo
   end
 
   pipeline :api do
@@ -23,24 +15,19 @@ defmodule TaksoWeb.Router do
   end
 
   scope "/", TaksoWeb do
-    pipe_through [:browser]
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
-  end
+    pipe_through :browser # Use the default browser stack
 
-  scope "/", TaksoWeb do
-    pipe_through [:browser, :browser_auth]
     get "/", PageController, :index
-  end
-
-  scope "/", TaksoWeb do
-    pipe_through [:browser, :browser_auth, :ensure_auth]
-    resources "/users", UserController
     get "/bookings/summary", BookingController, :summary
+    resources "/users", UserController
     resources "/bookings", BookingController
+    # resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/sessions", SessionController
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", TaksoWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", TaksoWeb do
+    pipe_through :api
+    post "/bookings", Api.BookingController, :create
+  end
 end

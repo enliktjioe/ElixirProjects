@@ -53,6 +53,6 @@ config :takso, Takso.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
-  database: "takso_dev",
+  database: "takso_hw2",
   hostname: "localhost",
   pool_size: 10

@@ -35,7 +35,7 @@ defmodule TaksoWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_takso_key",
-    signing_salt: "zqIzq+0e"
+    signing_salt: "gHRsF6lo"
 
   plug TaksoWeb.Router
 

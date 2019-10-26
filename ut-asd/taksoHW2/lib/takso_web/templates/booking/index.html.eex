@@ -3,6 +3,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Date</th>
       <th>Pickup address</th>
       <th>Drop off address</th>
       <th>Status</th>
@@ -11,6 +12,7 @@
   <tbody>
 <%= for booking <- @bookings do %>
     <tr>
+      <td><%= booking.inserted_at %></td>
       <td><%= booking.pickup_address %></td>
       <td><%= booking.dropoff_address %></td>
       <td><%= booking.status %></td>
