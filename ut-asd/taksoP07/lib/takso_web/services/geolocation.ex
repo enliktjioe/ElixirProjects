@@ -18,5 +18,5 @@ defmodule Takso.Geolocation do
     [v1, v2]
   end
 
-  defp get_key(), do: "put your Bing Key here"
+  defp get_key(), do: "AusWHdnv29I8PARcZHTJyqdGsS-Q2OI4Gbngmq5dcoYGI9A97mjWWoeOIenKQYAf"
 end
