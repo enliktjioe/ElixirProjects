@@ -1,9 +1,0 @@
-/_build
-/db
-/cover
-/deps
-/.elixir_ls
-erl_crash.dump
-/*.ez
-*.beam
-/node_modules
