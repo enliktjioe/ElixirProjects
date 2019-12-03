@@ -16,7 +16,8 @@ defmodule WikiDream.CLI do
   end
 
   def process({search_term}) do
-    IO.inspect search_term
+    # IO.inspect search_term
+    WikiDream.JSONFetch.fetch(search_term)
   end
 
   def process(:help) do
