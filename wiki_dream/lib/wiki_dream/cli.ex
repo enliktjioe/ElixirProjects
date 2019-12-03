@@ -18,6 +18,14 @@ defmodule WikiDream.CLI do
   def process({search_term}) do
     # IO.inspect search_term
     WikiDream.JSONFetch.fetch(search_term)
+    |> WikiDream.ExtractMap.extract_from_body
+    |> string_format
+    # |> IO.inspect
+  end
+
+  def string_format(string) do
+    String.replace(string, ". ", ". \n")
+    |> IO.puts
   end
 
   def process(:help) do
@@ -28,4 +36,5 @@ defmodule WikiDream.CLI do
     example: wiki_dream lion
     """
   end
+
 end

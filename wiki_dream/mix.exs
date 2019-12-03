@@ -6,7 +6,6 @@ defmodule WikiDream.MixProject do
       app: :wiki_dream,
       version: "0.1.0",
       elixir: "~> 1.9",
-      build_embedded: Mix.env == :prod,
       start_permanent: Mix.env() == :prod,
       escript: [main_module: WikiDream.CLI], #Added escript
       deps: deps()
@@ -23,8 +22,8 @@ defmodule WikiDream.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:httpoison, "~> 1.6.2"},
-      {:poison, "~> 3.1"}
+      {:httpoison, "~> 0.9.0"},
+      {:poison, "~> 2.0"}
     ]
   end
 end

@@ -3,7 +3,7 @@ defmodule WikiDream.JSONFetch do
     wiki_url(search_term)
     |> HTTPoison.get
     |> handle_json
-    |> IO.inspect
+    # |> IO.inspect
   end
 
   def handle_json({:ok, %{status_code: 200, body: body}}) do
