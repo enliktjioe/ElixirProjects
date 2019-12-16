@@ -4,16 +4,15 @@ defmodule Examprep.Accounts.User do
 
   schema "users" do
     field :name, :string
-    field :password, :string
     field :username, :string
+    field :password, :string
 
     timestamps()
   end
 
-  @doc false
-  def changeset(user, attrs) do
-    user
-    |> cast(attrs, [:name, :username, :password])
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:name, :username, :password])
     |> validate_required([:name, :username, :password])
   end
 end
