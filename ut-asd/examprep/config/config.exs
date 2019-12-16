@@ -13,7 +13,7 @@ config :examprep,
 # Configures the endpoint
 config :examprep, ExamprepWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "OgA/Z7r2uCgqBhzx4vcadEkTo6FWxgyTwkbz+2EG8FhLICT+501bo4ZvWUoG8iST",
+  secret_key_base: "Ju0th8Pf4Ga/dg8Yf9z+0/YY03GrX3QxKqYj90IE2LIM9GqoCUfuoJ1DrmFepmDa",
   render_errors: [view: ExamprepWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Examprep.PubSub, adapter: Phoenix.PubSub.PG2]
 

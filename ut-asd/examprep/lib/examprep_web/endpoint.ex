@@ -40,7 +40,7 @@ defmodule ExamprepWeb.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_examprep_key",
-    signing_salt: "O1mRIyCs"
+    signing_salt: "hElilZw8"
 
   plug ExamprepWeb.Router
 end
